@@ -1,4 +1,5 @@
 <script setup>
+import ButtonCount from './components/ButtonCount.vue';
 import FirstComponent from './components/FirstComponent.vue';
 import SecondComponent from './components/SecondComponent.vue';
 
@@ -11,6 +12,8 @@ import SecondComponent from './components/SecondComponent.vue';
 <FirstComponent></FirstComponent>
 <!-- <first-component></first-component> -->
 <SecondComponent></SecondComponent>
+
+<ButtonCount></ButtonCount>
 
 </template>
 
