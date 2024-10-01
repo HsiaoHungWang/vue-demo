@@ -13,12 +13,22 @@ import { ref } from 'vue';
    
    const id = ref(10);
    const homeUrl = ref('https://www.ispan.com.tw');
-   const isDisabled = ref(true);
+   const isDisabled = ref(false);
     const isLogin = ref(false);
     const getName = () => {
         return 'Mary'
     };
     // const getName = () => 'Jack';
+
+    const message = ref('Hello v-model')
+    const num1 = ref(0)
+    const num2 = ref(0)
+    const sum = ref(0)
+
+    const sumHandler = ()=>{
+       sum.value =  num1.value + num2.value 
+    }
+
 </script>
 
 <template>
@@ -41,9 +51,21 @@ import { ref } from 'vue';
       <a :href="homeUrl">ispan</a>
       <!--<img src="/public/dog1.jpg" />--><!--不建議這樣寫-->
       <!--public 資料夾中檔案的讀取，不用加上public資料夾-->
-      <img src="/dogs/dog1.jpg" />
-      <img src="/src/assets/cat1.jpg" />
+      <!-- <img src="/dogs/dog1.jpg" />
+      <img src="/src/assets/cat1.jpg" /> -->
       <button :disabled="isDisabled">click</button>
+      <hr />
+      <!-- Two-Way Binding-->
+       <!--預設是 Input 事件 -->
+       <!--加上.trim 會刪除左右空白-->
+       <input type="text" v-model.trim="message">{{ message }}
+       <!--加上 .lazy 改成用 Change 事件 -->
+       <input type="text" v-model.lazy="message">{{ message.length }}
+       <br />
+       <!--加上 .number 把輸入數值字串改成數值型態 -->
+       <input type="text" v-model.number="num1"> +
+       <input type="text" v-model.number="num2" @blur="sumHandler"> =
+       {{ sum }}
     </div>
 </template>
 
