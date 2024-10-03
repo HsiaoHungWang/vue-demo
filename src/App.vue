@@ -48,9 +48,12 @@ setInterval(() => {
 
 <template>
     <h2>Vue Demo：{{ clock }}{{ clock1.theTime }}</h2>
-    <RouterLink to="/">首頁</RouterLink> |
-    <RouterLink to="/about">關於我們</RouterLink> |
-    <RouterLink to="/contact">聯絡我們</RouterLink> |
+    <RouterLink to="/" activeClass="active">首頁</RouterLink> |
+    <RouterLink to="/about" activeClass="active">關於我們</RouterLink> |
+    <RouterLink to="/contact" activeClass="active">聯絡我們</RouterLink> |
+    <RouterLink :to="{ name: 'Home' }" activeClass="active">首頁</RouterLink> |
+    <RouterLink :to="{ name: 'About' }" activeClass="active">關於我們</RouterLink> |
+    <RouterLink :to="{ name: 'Abc' }" activeClass="active">聯絡我們</RouterLink> |
     <hr />
 
     <RouterView></RouterView>
@@ -68,4 +71,8 @@ setInterval(() => {
 
 </template>
 
-<style scoped></style>
+<style scoped>
+.active {
+    background-color: silver;
+}
+</style>
