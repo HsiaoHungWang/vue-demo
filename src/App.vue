@@ -48,16 +48,23 @@ setInterval(() => {
 
 <template>
     <h2>Vue Demo：{{ clock }}{{ clock1.theTime }}</h2>
+    <RouterLink to="/">首頁</RouterLink> |
+    <RouterLink to="/about">關於我們</RouterLink> |
+    <RouterLink to="/contact">聯絡我們</RouterLink> |
     <hr />
+
+    <RouterView></RouterView>
+
+
     <!-- 按下 Tab 鍵-->
     <!-- <FirstComponent></FirstComponent>
 <first-component></first-component> 
 <SecondComponent></SecondComponent>
 <ThirdComponent></ThirdComponent>
 <ButtonCount></ButtonCount>
-<ComputedDemo></ComputedDemo>-->
+<ComputedDemo></ComputedDemo>
 
-    <BMIComponent></BMIComponent>
+    <BMIComponent></BMIComponent>-->
 
 </template>
 
