@@ -1,5 +1,5 @@
 <script setup>
-import { ref, watch } from 'vue';
+import { ref, watch, watchEffect } from 'vue';
 import BMIComponent from './components/BMIComponent.vue';
 import ButtonCount from './components/ButtonCount.vue';
 import ComputedDemo from './components/ComputedDemo.vue';
@@ -28,14 +28,19 @@ const clock1 = ref({
 // }, { immediate: true, once: false })
 //immediate: true 表示組件載入就要執行 watch
 
-watch(clock1, (newTime, oldTime) => {
-    console.log('new：', newTime)
-    console.log('old：', oldTime)
-}, { deep: true })
+// watch(clock1, (newTime, oldTime) => {
+//     console.log('new：', newTime)
+//     console.log('old：', oldTime)
+// }, { deep: true })
+
+watchEffect(() => {
+    console.log('effect1:', clock.value)
+    console.log('effect2:', clock1.value.theTime)
+})
 
 //每隔一秒鐘讀取現在的時間
 setInterval(() => {
-    clock.value = formatTime(new Date())
+    // clock.value = formatTime(new Date())
     clock1.value.theTime = formatTime(new Date())
 }, 1000);
 
