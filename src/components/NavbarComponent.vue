@@ -22,6 +22,9 @@
             <RouterLink :to="{ name: 'Abc' }" class="nav-link" activeClass="active">聯絡我們</RouterLink>
         </li>
         <li class="nav-item">
+            <RouterLink :to="{ name: 'directive' }" class="nav-link" activeClass="active">Directive </RouterLink>
+        </li>
+        <li class="nav-item">
             <RouterLink :to="{ name: 'member', params:{id:'20'} }" class="nav-link"  activeClass="active">會員中心20</RouterLink>
         </li>
       </ul>

@@ -6,6 +6,7 @@ import Team1View from "./views/Team1View.vue";
 import Team2View from "./views/Team2View.vue";
 import MemberView from "./views/MemberView.vue";
 import NotFound from "./views/NotFound.vue";
+import DirectiveView from "./views/DirectiveView.vue";
 
 //路由設定 path 比對 URL，比對成功就載入對應的組件
 const routes =[
@@ -43,6 +44,12 @@ const routes =[
     path:'/contactAbc',
     component:ContactView,
     name:'Abc'
+},
+{
+    //http://localhost:5173/directive  => 載入 DirectiveView Component
+    path:'/directive',
+    component:DirectiveView,
+    name:'directive'
 },{
   //http://localhost:5173/member/參數  => 載入 MemberView Component
   path:'/member/:id',
