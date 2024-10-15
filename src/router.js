@@ -4,7 +4,7 @@ import AboutView from "./views/AboutView.vue";
 import ContactView from "./views/ContactView.vue";
 import Team1View from "./views/Team1View.vue";
 import Team2View from "./views/Team2View.vue";
-import MyComponent from "./components/MyComponent.vue";
+import MemberView from "./views/MemberView.vue";
 
 //路由設定 path 比對 URL，比對成功就載入對應的組件
 const routes =[
@@ -42,6 +42,12 @@ const routes =[
     path:'/contactAbc',
     component:ContactView,
     name:'Abc'
+},{
+  //http://localhost:5173/member/參數  => 載入 MemberView Component
+  path:'/member/:id',
+  component:MemberView,
+  name:'member',
+  props:true
 }]
 
 const router = createRouter({

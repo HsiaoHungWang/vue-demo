@@ -33,16 +33,16 @@ const clock1 = ref({
 //     console.log('old：', oldTime)
 // }, { deep: true })
 
-watchEffect(() => {
-    console.log('effect1:', clock.value)
-    console.log('effect2:', clock1.value.theTime)
-})
+// watchEffect(() => {
+//     console.log('effect1:', clock.value)
+//     console.log('effect2:', clock1.value.theTime)
+// })
 
 //每隔一秒鐘讀取現在的時間
-setInterval(() => {
-    // clock.value = formatTime(new Date())
-    clock1.value.theTime = formatTime(new Date())
-}, 1000);
+// setInterval(() => {
+//     // clock.value = formatTime(new Date())
+//     clock1.value.theTime = formatTime(new Date())
+// }, 1000);
 
 </script>
 
@@ -51,9 +51,11 @@ setInterval(() => {
     <RouterLink to="/" activeClass="active">首頁</RouterLink> |
     <RouterLink to="/about" activeClass="active">關於我們</RouterLink> |
     <RouterLink to="/contact" activeClass="active">聯絡我們</RouterLink> |
+    <RouterLink to="/member/12" activeClass="active">會員中心12</RouterLink> |
     <RouterLink :to="{ name: 'Home' }" activeClass="active">首頁</RouterLink> |
     <RouterLink :to="{ name: 'About' }" activeClass="active">關於我們</RouterLink> |
     <RouterLink :to="{ name: 'Abc' }" activeClass="active">聯絡我們</RouterLink> |
+    <RouterLink :to="{ name: 'member', params:{id:'20'} }" activeClass="active">會員中心20</RouterLink> |
     <hr />
 
     <RouterView></RouterView>
