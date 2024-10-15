@@ -1,11 +1,16 @@
 <script setup>
 import { ref, watch, watchEffect } from 'vue';
-import BMIComponent from './components/BMIComponent.vue';
-import ButtonCount from './components/ButtonCount.vue';
-import ComputedDemo from './components/ComputedDemo.vue';
-import FirstComponent from './components/FirstComponent.vue';
-import SecondComponent from './components/SecondComponent.vue';
-import ThirdComponent from './components/ThirdComponent.vue';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+import NavbarComponent from './components/NavbarComponent.vue';
+
+// import BMIComponent from './components/BMIComponent.vue';
+// import ButtonCount from './components/ButtonCount.vue';
+// import ComputedDemo from './components/ComputedDemo.vue';
+// import FirstComponent from './components/FirstComponent.vue';
+// import SecondComponent from './components/SecondComponent.vue';
+// import ThirdComponent from './components/ThirdComponent.vue';
 
 const formatTime = today => {
     const hours = String(today.getHours()).padStart(2, '0') //03、14
@@ -47,15 +52,17 @@ const clock1 = ref({
 </script>
 
 <template>
-    <h2>Vue Demo：{{ clock }}{{ clock1.theTime }}</h2>
-    <RouterLink to="/" activeClass="active">首頁</RouterLink> |
+   <div class="container">
+    <NavbarComponent></NavbarComponent>
+    <!-- <h2>Vue Demo：{{ clock }}{{ clock1.theTime }}</h2> -->
+    <!-- <RouterLink to="/" activeClass="active">首頁</RouterLink> |
     <RouterLink to="/about" activeClass="active">關於我們</RouterLink> |
     <RouterLink to="/contact" activeClass="active">聯絡我們</RouterLink> |
     <RouterLink to="/member/12" activeClass="active">會員中心12</RouterLink> |
     <RouterLink :to="{ name: 'Home' }" activeClass="active">首頁</RouterLink> |
     <RouterLink :to="{ name: 'About' }" activeClass="active">關於我們</RouterLink> |
     <RouterLink :to="{ name: 'Abc' }" activeClass="active">聯絡我們</RouterLink> |
-    <RouterLink :to="{ name: 'member', params:{id:'20'} }" activeClass="active">會員中心20</RouterLink> |
+    <RouterLink :to="{ name: 'member', params:{id:'20'} }" activeClass="active">會員中心20</RouterLink> | -->
     <hr />
 
     <RouterView></RouterView>
@@ -70,6 +77,11 @@ const clock1 = ref({
 <ComputedDemo></ComputedDemo>
 
     <BMIComponent></BMIComponent>-->
+
+   </div>
+
+
+   
 
 </template>
 

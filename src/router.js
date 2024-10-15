@@ -5,6 +5,7 @@ import ContactView from "./views/ContactView.vue";
 import Team1View from "./views/Team1View.vue";
 import Team2View from "./views/Team2View.vue";
 import MemberView from "./views/MemberView.vue";
+import NotFound from "./views/NotFound.vue";
 
 //路由設定 path 比對 URL，比對成功就載入對應的組件
 const routes =[
@@ -48,6 +49,10 @@ const routes =[
   component:MemberView,
   name:'member',
   props:true
+},{
+  //404
+  path:'/:pathMatch(.*)*',
+  component:NotFound
 }]
 
 const router = createRouter({
