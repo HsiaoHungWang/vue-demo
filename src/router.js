@@ -7,6 +7,9 @@ import Team2View from "./views/Team2View.vue";
 import MemberView from "./views/MemberView.vue";
 import NotFound from "./views/NotFound.vue";
 import DirectiveView from "./views/DirectiveView.vue";
+import TodosView from "./views/TodosView.vue";
+import RegisterView from "./views/RegisterView.vue";
+import LoginView from "./views/LoginView.vue";
 
 //路由設定 path 比對 URL，比對成功就載入對應的組件
 const routes =[
@@ -50,7 +53,26 @@ const routes =[
     path:'/directive',
     component:DirectiveView,
     name:'directive'
-},{
+},
+{
+    //http://localhost:5173/todos  => 載入 TodosView Component
+    path:'/todos',
+    component:TodosView,
+    name:'todos'
+},
+{
+    //http://localhost:5173/register  => 載入 RegisterView Component
+    path:'/register',
+    component:RegisterView,
+    name:'register'
+},
+{
+    //http://localhost:5173/login  => 載入 RegisterView Component
+    path:'/login',
+    component:LoginView,
+    name:'login'
+},
+{
   //http://localhost:5173/member/參數  => 載入 MemberView Component
   path:'/member/:id',
   component:MemberView,
