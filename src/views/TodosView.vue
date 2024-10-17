@@ -1,15 +1,36 @@
 <script setup>
 import { ref } from 'vue';
+const newTodo = ref('')
 
 const todos = ref(
     [
-        { "id": "m21uwqfprb0ncx4", "title": "todo1", "completed": false },
-        { "id": "m21w6x73hw2tvrc", "title": "todo2", "completed": true },
-        { "id": "m21w6x73hw2abcd", "title": "todo3", "completed": false },
+        { "id": "m21uwqfprb0ncx4", "title": "買菜", "completed": false },
+        { "id": "m21w6x73hw2tvrc", "title": "看電視", "completed": true },
+        { "id": "m21w6x73hw2abcd", "title": "睡覺", "completed": true },
     ]
 )
 //取得唯一值
 const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).substring(2, 9);
+
+//待做事項新增
+const enterHandler = ()=>{
+    todos.value.push({ "id": uniqueId(), "title": newTodo.value, "completed": false})
+     newTodo.value = ''
+}
+
+//清除輸入的資料
+const deleteHandler = () => {
+    newTodo.value = ''
+}
+
+//刪除 todo
+const removeTodo = todo =>{
+    //找到 todo 在 todos 中的索引值
+    const idx = todos.value.indexOf(todo)
+   
+    //刪除 從idx這個位置刪除1筆資料
+    todos.value.splice(idx,1)
+}
 
 </script>
 
@@ -18,38 +39,19 @@ const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).subs
         <div class="col-3"> </div>
         <div class="col-6">
             <h3>Todos Page</h3>
-            <input type="text" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
+            <input v-model="newTodo" @keyup.delete="deleteHandler" @keyup.enter="enterHandler" type="text" class="form-control" autofocus autocomplete="off" placeholder="想要做甚麼?">
             <ul class="list-group mt-3">
-                <li class="list-group-item">
+                <li v-for="todo in todos" :key="todo.id" class="list-group-item">
                     <div class="d-flex justify-content-between">
                         <div>
-                            <input class="form-check-input me-3" type="checkbox">
-                            <label class="form-check-label">todo1</label>
+                            <input v-model="todo.completed" class="form-check-input me-3" type="checkbox">
+                            <label class="form-check-label" :class="{completed:todo.completed}">{{ todo.title }}</label>
                         </div>
-                        <button class="badge bg-danger rounded-pill border-0">X</button>
+                        <button @click="removeTodo(todo)" class="badge bg-danger rounded-pill border-0">X</button>
                     </div>
 
                 </li>
-                <li class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <input class="form-check-input me-3" type="checkbox">
-                            <label class="form-check-label">todo2</label>
-                        </div>
-                        <button class="badge bg-danger rounded-pill border-0">X</button>
-                    </div>
-
-                </li>
-                <li class="list-group-item">
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <input class="form-check-input me-3" type="checkbox">
-                            <label class="form-check-label">todo3</label>
-                        </div>
-                        <button class="badge bg-danger rounded-pill border-0">X</button>
-                    </div>
-
-                </li>
+              
             </ul>
             <div class="mt-3 d-flex justify-content-between">
                 <strong class=" me-3">尚有 3 個工作未完成</strong>
