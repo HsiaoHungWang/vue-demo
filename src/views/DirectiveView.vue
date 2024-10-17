@@ -14,6 +14,8 @@ import { ref } from 'vue';
    ])
    const selectedOption = ref('106')
    const user = ref({"name":"Jack","age":30,"email":"Jack@company.com"})
+   const bgColor = ref("green")
+   const radius = ref("25px")
 </script>
 
 <template>
@@ -49,10 +51,22 @@ import { ref } from 'vue';
   <ul class="pagination pagination-lg">   
     <li class="page-item" v-for="i in 8"><a class="page-link" href="#">{{ i }}</a></li>
   </ul>
+  <hr />
+  <input type="color" v-model="bgColor" />
+  <div style="width:200px;height:200px;border:1px solid green"
+     :style="{'backgroundColor':bgColor,'border-radius':radius}"
+  ></div>
+  <div style="width:200px;height:200px" 
+     :class="{active:true, 'text-danger':false}"></div>
 
     </div>
 </template>
 
 <style lang="css" scoped>
-
+  .active{
+   border:1px solid green
+  }
+  .text-danger{
+   background-color: pink;
+  }
 </style>
