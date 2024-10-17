@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 const newTodo = ref('')
 
 const todos = ref(
@@ -32,6 +32,23 @@ const removeTodo = todo =>{
     todos.value.splice(idx,1)
 }
 
+//移除所有完成的工作
+const removeCompleted = ()=>{
+    for(let i=todos.value.length-1;i>=0;i--){
+        if(todos.value[i].completed){
+            todos.value.splice(i, 1)
+        }
+    }
+}
+
+//計算還有幾個工作未完成
+const remaining = computed(()=>{
+   const activeTodos = todos.value.filter(todo=>!todo.completed)  
+   return activeTodos.length
+})
+
+
+
 </script>
 
 <template>
@@ -54,8 +71,8 @@ const removeTodo = todo =>{
               
             </ul>
             <div class="mt-3 d-flex justify-content-between">
-                <strong class=" me-3">尚有 3 個工作未完成</strong>
-                <button class="btn btn-warning me-3">清除完成工作</button>
+                <strong class=" me-3">尚有 {{remaining}} 個工作未完成</strong>
+                <button class="btn btn-warning me-3" @click="removeCompleted">清除完成工作</button>
             </div>
         </div>
         <div class="col-3"></div>
