@@ -16,6 +16,7 @@ import { ref } from 'vue';
    const user = ref({"name":"Jack","age":30,"email":"Jack@company.com"})
    const bgColor = ref("green")
    const radius = ref("25px")
+   const items = ref(["c"])
 </script>
 
 <template>
@@ -60,6 +61,12 @@ import { ref } from 'vue';
      :class="{active:true, 'text-danger':false}"></div>
 
     </div>
+    <hr />
+    <input type="checkbox" value="a" v-model="items">Item1
+    <input type="checkbox" value="b" v-model="items">Item2
+    <input type="checkbox" value="c" v-model="items">Item3
+    <input type="checkbox" value="d" v-model="items">Item4
+    <span>選取 {{ items }}</span>
 </template>
 
 <style lang="css" scoped>
