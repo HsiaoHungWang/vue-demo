@@ -12,6 +12,7 @@ import { ref } from 'vue';
      {"code":"104","name":"中山區"},   
      {"code":"106","name":"大安區"}
    ])
+   const selectedOption = ref('106')
 </script>
 
 <template>
@@ -30,9 +31,12 @@ import { ref } from 'vue';
     <p>isLoggedIn 為 False </p>
     <button @click="isLoggedIn=!isLoggedIn">登入</button>
  </div>
- <select>
+ <!--v-for讀取陣列-->
+ <select v-model="selectedOption">
+   <!-- region = {"code":"100","name":"中正區"}-->
     <option v-for="(region,index) in regions" :value="region.code" :key="region.code">{{index}} {{region.name}}</option>    
  </select>
+ <span>{{ selectedOption }}</span>
     </div>
 </template>
 
