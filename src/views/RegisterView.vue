@@ -86,9 +86,11 @@ const validate = ()=>{
    validity.value.isValid=validity.value.nameRequired && validity.value.pwdRequired && validity.value.emailRequired && validity.value.pwdConfirm && validity.value.emailFormat
 
    
-  //ajax
+  
   if(validity.value.isValid){
     alert('驗證成功')
+    //將資料透過Ajax(fetch())送到後端API
+    
   }
    
 }

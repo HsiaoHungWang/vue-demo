@@ -1,0 +1,38 @@
+<script setup>
+    import FirstComponent from '@/components/FirstComponent.vue';
+    import SecondComponent from '@/components/SecondComponent.vue';
+    import ThirdComponent from '@/components/ThirdComponent.vue';
+    import { ref } from 'vue';
+
+    const items = ref([FirstComponent, SecondComponent, ThirdComponent])
+    const tabs = ref([
+        {"name":"First", "component":FirstComponent},
+        {"name":"Second", "component":SecondComponent},
+        {"name":"Third", "component":ThirdComponent}
+    ])
+    const activeIndex = ref(0)
+    const activeTab = ref(FirstComponent)
+
+    const setActive = index => {
+        activeIndex.value = index
+        activeTab.value = tabs.value[index].component
+    }
+</script>
+
+<template>
+    <div>
+      <h2>Tabs Demo</h2>
+      <!-- <component :is="items[2]"></component> -->
+      <ul class="nav nav-tabs">
+        <li class="nav-item" style="cursor: pointer;" v-for="(tab, index) in tabs" :key="tab.name">
+            <a class="nav-link" @click="setActive(index)" :class="{active:activeIndex === index}">{{ tab.name  }}</a>
+        </li>
+        
+      </ul>
+      <component :is="activeTab"></component>
+    </div>
+</template>
+
+<style lang="css" scoped>
+
+</style>
