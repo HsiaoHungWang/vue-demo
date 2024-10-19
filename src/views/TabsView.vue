@@ -29,12 +29,24 @@
         </li>
         
       </ul>
-      <KeepAlive>
-        <component :is="activeTab"></component>
-     </KeepAlive>
+      <Transition name="move">
+        <KeepAlive>
+            <component :is="activeTab"></component>
+        </KeepAlive>
+    </Transition>
+  
     </div>
 </template>
 
 <style lang="css" scoped>
- 
+ .move-enter-active,
+.move-leave-active{
+    transition: all 3s;
+}
+.move-enter-from,
+.move-leave-to{
+  opacity:0;
+  transform: translateX(100px); /* rotate(0.5turn) scale(0.2);*/
+}
+
 </style>
