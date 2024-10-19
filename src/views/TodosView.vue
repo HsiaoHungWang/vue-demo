@@ -1,7 +1,7 @@
 <script setup>
 import TodoAdd from '@/components/TodoAdd.vue';
 import TodoFooter from '@/components/TodoFooter.vue';
-import { computed, ref } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 
 
 // const todos = ref(
@@ -26,6 +26,7 @@ const uniqueId = () => Date.now().toString(36) + Math.random().toString(36).subs
 //待做事項新增
 const addTodoHandler = todo => {
     todos.value.push({ "id": uniqueId(), "title": todo, "completed": false})
+    
 }
 
 //刪除 todo
@@ -51,6 +52,10 @@ const removeCompletedHandler = ()=>{
 const remaining = computed(()=>{
    const activeTodos = todos.value.filter(todo=>!todo.completed)  
    return activeTodos.length
+})
+
+watchEffect(()=>{
+    localStorage.setItem("todos",JSON.stringify(todos.value))
 })
 
 
