@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import NavbarComponent from './components/NavbarComponent.vue';
+import FancyButton from './components/FancyButton.vue';
 
 // import BMIComponent from './components/BMIComponent.vue';
 // import ButtonCount from './components/ButtonCount.vue';
@@ -64,7 +65,15 @@ const clock1 = ref({
     <RouterLink :to="{ name: 'Abc' }" activeClass="active">聯絡我們</RouterLink> |
     <RouterLink :to="{ name: 'member', params:{id:'20'} }" activeClass="active">會員中心20</RouterLink> | -->
     <hr />
-
+     <FancyButton>
+        <i class="bi bi-airplane"></i>
+        <span class="mx-1">飛機</span>
+    </FancyButton> 
+    <FancyButton>
+        <i class="bi bi-alarm"></i>
+        <span class="mx-1">鬧鐘</span>
+    </FancyButton>
+    <hr />
     <RouterView></RouterView>
 
 
