@@ -16,7 +16,7 @@ import { computed, ref, watchEffect } from 'vue';
 //localStorage 資料讀取
 const todos =  ref(JSON.parse(localStorage.getItem("todos")))
 
-//寫回localStorage的程式，要寫在哪裡??
+//寫回localStorage的程式，要寫在哪裡??  watchEffect
 
 
 
