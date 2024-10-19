@@ -1,5 +1,6 @@
 <script setup>
 import TodoAdd from '@/components/TodoAdd.vue';
+import TodoFooter from '@/components/TodoFooter.vue';
 import { computed, ref } from 'vue';
 
 
@@ -18,8 +19,6 @@ const addTodoHandler = todo => {
     todos.value.push({ "id": uniqueId(), "title": todo, "completed": false})
 }
 
-
-
 //刪除 todo
 const removeTodo = todo =>{
     //找到 todo 在 todos 中的索引值
@@ -30,7 +29,8 @@ const removeTodo = todo =>{
 }
 
 //移除所有完成的工作
-const removeCompleted = ()=>{
+//有子組件觸發執行
+const removeCompletedHandler = ()=>{
     for(let i=todos.value.length-1;i>=0;i--){
         if(todos.value[i].completed){
             todos.value.splice(i, 1)
@@ -67,10 +67,7 @@ const remaining = computed(()=>{
                 </li>
               
             </ul>
-            <div class="mt-3 d-flex justify-content-between">
-                <strong class=" me-3">尚有 {{remaining}} 個工作未完成</strong>
-                <button class="btn btn-warning me-3" @click="removeCompleted">清除完成工作</button>
-            </div>
+            <TodoFooter :total="remaining" @removeCompleted="removeCompletedHandler"></TodoFooter>
         </div>
         <div class="col-3"></div>
 
