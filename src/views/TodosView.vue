@@ -59,6 +59,8 @@ const remaining = computed(()=>{
 watchEffect(()=>{
     localStorage.setItem("todos",JSON.stringify(todos.value))
     const activeTodos = todos.value.filter(todo=>!todo.completed) 
+
+    //重新計算未完成工作事項傳給 Pinia 的方法
     todoStore.qtyChange(activeTodos.length)
 })
 
