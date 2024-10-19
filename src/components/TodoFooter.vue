@@ -1,6 +1,6 @@
 <script setup>
     const props = defineProps({
-        total:String
+        total:Number
     })
 
     const emit = defineEmits(['removeCompleted'])
