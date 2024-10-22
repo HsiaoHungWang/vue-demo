@@ -10,6 +10,7 @@ const category = ref({
 })
 
     // const API_URL = 'http://127.0.0.1:8000/api/category/'
+    //串接API - GET 資料讀取
     const loadCategories = async ()=>{
          const response = await fetch(API_URL)
          const datas = await response.json()
@@ -18,7 +19,7 @@ const category = ref({
         //  console.log(categories.value)
     }
 
-    //串接API - POST 新增
+    //串接API - POST 資料新增
     const addCategory = async()=>{
         // console.log(category.value)
         const response = await fetch(API_URL,{
@@ -32,6 +33,17 @@ const category = ref({
         }else{
             alert('新增失敗')
         }
+    }
+
+    //串接 API - 資料刪除
+    const removeCategory = async(category) => {
+      //console.log(category) category/14/
+      const response = await fetch(`${API_URL}${category.categoryid}/`,{
+        method: 'DELETE'
+      })
+      if(response.ok){
+        loadCategories()
+      }
     }
 
     const clearCategory = ()=>{
@@ -53,7 +65,7 @@ const category = ref({
    {{ category.categoryname }}
    <div>
     <span class="badge text-bg-primary rounded-pill m-1"><i class="bi bi-pencil-square"></i></span>
-    <span class="badge text-bg-danger rounded-pill m-1"><i class="bi bi-trash-fill"></i></span>
+    <span @click="removeCategory(category)" class="badge text-bg-danger rounded-pill m-1"><i class="bi bi-trash-fill"></i></span>
    </div>
   </li>
  
