@@ -5,13 +5,16 @@ import { ref } from 'vue';
     // fetch('http://127.0.0.1:8000/api/spots/')
     //   .then(response=>response.json())
     //   .then(datas=>console.log(datas))
-    const results = ref([])
+    const SPOTS = ref([])
+    const BASE_URL = import.meta.env.VITE_APIURL
+    const API_URL= `${BASE_URL}/spots/`
+
     const loadSpots = async()=>{
-        const response  = await fetch('http://127.0.0.1:8000/api/spots/')
+        const response  = await fetch(API_URL)
         const datas = await response.json() 
         console.log(datas)       
-        results.value = datas
-        console.log(results.value)
+        SPOTS.value = datas
+        console.log(SPOTS.value)
     }
 
     loadSpots()
@@ -19,7 +22,7 @@ import { ref } from 'vue';
 
 <template>
     <div class="row row-cols-1 row-cols-md-3 g-4">
-  <div v-for="{spotid, spottitle, spotdescription, spotimage, address} in results" class="col">
+  <div v-for="{spotid, spottitle, spotdescription, spotimage, address} in SPOTS.results" class="col">
     <div class="card h-100">
       <img :src="spotimage" class="card-img-top" :alt="spottitle">
       <div class="card-body">
