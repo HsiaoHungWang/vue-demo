@@ -1,4 +1,5 @@
 <script setup>
+import CategoriesComponent from '@/components/CategoriesComponent.vue';
 import PageSizeComponent from '@/components/PageSizeComponent.vue';
 import PagingComponent from '@/components/PagingComponent.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
@@ -73,6 +74,12 @@ const pageSizeHandler = value => {
   ITEM.value.page = 1
 }
 
+//根據分類編號讀取景點
+const CategoryHandler = id => {
+  ITEM.value.categoryid = id
+  ITEM.value.page = 1
+}
+
 </script>
 
 <template>
@@ -93,22 +100,31 @@ const pageSizeHandler = value => {
     <PagingComponent @goPaging="pagingHandler" :thePage="SPOTS.current_page" :totalPages="SPOTS.total_page">
     </PagingComponent>
   </div>
-  <div class="row row-cols-1 row-cols-md-3 g-4">
-    <div v-for="{ spotid, spottitle, spotdescription, spotimage, address } in SPOTS.results" class="col" :key="spotid">
-      <div class="card h-100">
-        <img :src="spotimage" class="card-img-top" :alt="spottitle">
-        <div class="card-body">
-          <h5 class="card-title">{{ spotid }} {{ spottitle }}</h5>
-          <p class="card-text">{{ spotdescription.length <= 100 ? spotdescription : spotdescription.substring(0, 100)
-              }}...</p>
+  <div class="row">
+    <div class="col-3">
+      <CategoriesComponent @categoryClick="CategoryHandler"></CategoriesComponent>
+    </div>
+    <div class="col-9">
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div v-for="{ spotid, spottitle, spotdescription, spotimage, address } in SPOTS.results" class="col"
+          :key="spotid">
+          <div class="card h-100">
+            <img :src="spotimage" class="card-img-top" :alt="spottitle">
+            <div class="card-body">
+              <h5 class="card-title">{{ spotid }} {{ spottitle }}</h5>
+              <p class="card-text">{{ spotdescription.length <= 100 ? spotdescription : spotdescription.substring(0,
+                100) }}...</p>
+            </div>
+            <div class="card-footer">
+              <small class="text-body-secondary">{{ address }}</small>
+            </div>
+          </div>
         </div>
-        <div class="card-footer">
-          <small class="text-body-secondary">{{ address }}</small>
-        </div>
+
       </div>
     </div>
-
   </div>
+
   <div class="d-flex justify-content-center">
     <PagingComponent @goPaging="pagingHandler" :thePage="SPOTS.current_page" :totalPages="SPOTS.total_page">
     </PagingComponent>
