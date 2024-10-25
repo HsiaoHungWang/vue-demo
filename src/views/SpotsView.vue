@@ -1,4 +1,5 @@
 <script setup>
+import PageSizeComponent from '@/components/PageSizeComponent.vue';
 import PagingComponent from '@/components/PagingComponent.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
 import SortingComponent from '@/components/SortingComponent.vue';
@@ -26,9 +27,6 @@ const toQueryString = params => {
     .join('&');
 }
 
-// const queryString = toQueryString(ITEM.value);
-// console.log(queryString);
-
 const SPOTS = ref([]) //接收API回傳的結果
 const BASE_URL = import.meta.env.VITE_APIURL
 const API_URL = `${BASE_URL}/spots/`
@@ -48,11 +46,7 @@ watchEffect(async () => {
   const URL_PARAMS = `${API_URL}?${toQueryString(ITEM.value)}`
   const response = await fetch(URL_PARAMS)
   const datas = await response.json()
-  console.log(datas)
   SPOTS.value = datas
-  console.log(SPOTS.value)
-
-
 
 })
 
@@ -70,15 +64,22 @@ const searchHandler = keyword => {
 
 //排序
 const sortingHandler = value => {
-  console.log(value)
   ITEM.value.ordering = value
+}
+
+//一頁幾筆資料
+const pageSizeHandler = value => {
+  ITEM.value.page_size = +value
+  ITEM.value.page = 1
 }
 
 </script>
 
 <template>
   <div class="row">
-    <div class="col-3"></div>
+    <div class="col-3">
+      <PageSizeComponent @PageSizeChange="pageSizeHandler"></PageSizeComponent>
+    </div>
     <div class="col-3"></div>
     <div class="col-3">
       <SortingComponent @sortChange="sortingHandler"></SortingComponent>
@@ -107,6 +108,10 @@ const sortingHandler = value => {
       </div>
     </div>
 
+  </div>
+  <div class="d-flex justify-content-center">
+    <PagingComponent @goPaging="pagingHandler" :thePage="SPOTS.current_page" :totalPages="SPOTS.total_page">
+    </PagingComponent>
   </div>
 </template>
 
