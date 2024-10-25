@@ -1,5 +1,6 @@
 <script setup>
 import PagingComponent from '@/components/PagingComponent.vue';
+import SearchComponent from '@/components/SearchComponent.vue';
 import { ref, watchEffect } from 'vue';
 
 //串接 API => Ajax fetch()
@@ -60,12 +61,23 @@ const pagingHandler = page => {
   ITEM.value.page = page
 }
 
-
+//關鍵字搜尋
+//keyword 就是子組件傳過來的資料
+const searchHandler = keyword => {
+  ITEM.value.search = keyword
+}
 
 
 </script>
 
 <template>
+  <div class="row">
+    <div class="col-4"></div>
+    <div class="col-4"></div>
+    <div class="col-4">
+      <SearchComponent @searchInput="searchHandler"></SearchComponent>
+    </div>
+  </div>
   <div class="d-flex justify-content-center">
     <PagingComponent @goPaging="pagingHandler" :thePage="SPOTS.current_page" :totalPages="SPOTS.total_page">
     </PagingComponent>
