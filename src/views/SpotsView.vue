@@ -1,6 +1,7 @@
 <script setup>
 import PagingComponent from '@/components/PagingComponent.vue';
 import SearchComponent from '@/components/SearchComponent.vue';
+import SortingComponent from '@/components/SortingComponent.vue';
 import { ref, watchEffect } from 'vue';
 
 //串接 API => Ajax fetch()
@@ -67,16 +68,25 @@ const searchHandler = keyword => {
   ITEM.value.search = keyword
 }
 
+//排序
+const sortingHandler = value => {
+  console.log(value)
+  ITEM.value.ordering = value
+}
 
 </script>
 
 <template>
   <div class="row">
-    <div class="col-4"></div>
-    <div class="col-4"></div>
-    <div class="col-4">
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col-3">
+      <SortingComponent @sortChange="sortingHandler"></SortingComponent>
+    </div>
+    <div class="col-3">
       <SearchComponent @searchInput="searchHandler"></SearchComponent>
     </div>
+
   </div>
   <div class="d-flex justify-content-center">
     <PagingComponent @goPaging="pagingHandler" :thePage="SPOTS.current_page" :totalPages="SPOTS.total_page">
