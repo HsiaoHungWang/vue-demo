@@ -53,10 +53,10 @@ const clock1 = ref({
 </script>
 
 <template>
-   <div class="container">
-    <NavbarComponent></NavbarComponent>
-    <!-- <h2>Vue Demo：{{ clock }}{{ clock1.theTime }}</h2> -->
-    <!-- <RouterLink to="/" activeClass="active">首頁</RouterLink> |
+    <div class="container">
+        <NavbarComponent></NavbarComponent>
+        <!-- <h2>Vue Demo：{{ clock }}{{ clock1.theTime }}</h2> -->
+        <!-- <RouterLink to="/" activeClass="active">首頁</RouterLink> |
     <RouterLink to="/about" activeClass="active">關於我們</RouterLink> |
     <RouterLink to="/contact" activeClass="active">聯絡我們</RouterLink> |
     <RouterLink to="/member/12" activeClass="active">會員中心12</RouterLink> |
@@ -64,21 +64,21 @@ const clock1 = ref({
     <RouterLink :to="{ name: 'About' }" activeClass="active">關於我們</RouterLink> |
     <RouterLink :to="{ name: 'Abc' }" activeClass="active">聯絡我們</RouterLink> |
     <RouterLink :to="{ name: 'member', params:{id:'20'} }" activeClass="active">會員中心20</RouterLink> | -->
-    <hr />
-     <FancyButton>
-        <i class="bi bi-airplane"></i>
-        <span class="mx-1">飛機</span>
-    </FancyButton> 
-    <FancyButton>
-        <i class="bi bi-alarm"></i>
-        <span class="mx-1">鬧鐘</span>
-    </FancyButton>
-    <hr />
-    <RouterView></RouterView>
+        <hr />
+        <FancyButton>
+            <i class="bi bi-airplane"></i>
+            <span class="mx-1">飛機A</span>
+        </FancyButton>
+        <FancyButton>
+            <i class="bi bi-alarm"></i>
+            <span class="mx-1">鬧鐘</span>
+        </FancyButton>
+        <hr />
+        <RouterView></RouterView>
 
 
-    <!-- 按下 Tab 鍵-->
-    <!-- <FirstComponent></FirstComponent>
+        <!-- 按下 Tab 鍵-->
+        <!-- <FirstComponent></FirstComponent>
 <first-component></first-component> 
 <SecondComponent></SecondComponent>
 <ThirdComponent></ThirdComponent>
@@ -87,10 +87,10 @@ const clock1 = ref({
 
     <BMIComponent></BMIComponent>-->
 
-   </div>
+    </div>
 
 
-   
+
 
 </template>
 
